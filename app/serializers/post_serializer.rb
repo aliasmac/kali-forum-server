@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :title, :content, :media_element, :author_id
+  attributes :id, :title, :content, :media_element, :author_id
   has_many :comments 
 
     class CommentSerializer < ActiveModel::Serializer

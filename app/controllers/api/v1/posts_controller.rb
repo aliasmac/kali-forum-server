@@ -5,12 +5,12 @@ class Api::V1::PostsController < ApplicationController
     render json: @posts
   end 
 
-  def new
-    @post = Post.new 
-  end
+  # def new
+  #   @post = Post.new 
+  # end
 
   def create
-    @post = Post.new(title: params[:title] , content: params[:content], media_element: params[:media_element], user_id: params[:user_id])
+    @post = Post.new(title: params[:title] , content: params[:content], media_element: params[:media_element], author_id: params[:author_id])
     if @post.save 
       render json: @post
     else
