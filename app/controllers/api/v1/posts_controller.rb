@@ -29,7 +29,7 @@ class Api::V1::PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
-    if @post.update(params)
+    if @post.update(post_params)
       render json: @post 
     else 
       render json: {error: "post not found"}, status: 404
@@ -50,7 +50,7 @@ class Api::V1::PostsController < ApplicationController
   private 
 
   def post_params 
-    params.require(:post).permit(:title, :content, :media_element, :user_id)
+    params.require(:post).permit(:id, :title, :content, :media_element, :author_id)
   end
   
 end
