@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :content
       t.string :media_element
       t.integer :author_id
+      t.integer :score 
 
       t.timestamps
     end

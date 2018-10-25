@@ -1,7 +1,8 @@
 class Api::V1::PostsController < ApplicationController
   
   def index 
-    @posts = Post.all 
+    # @pi_names = PiName.all(:order => 'pi_names.last_name DESC')
+    @posts = Post.order(id: :asc)
     render json: @posts
   end 
 
@@ -10,7 +11,7 @@ class Api::V1::PostsController < ApplicationController
   # end
 
   def create
-    @post = Post.new(title: params[:title] , content: params[:content], media_element: params[:media_element], author_id: params[:author_id])
+    @post = Post.new(title: params[:title] , content: params[:content], media_element: params[:media_element], author_id: params[:author_id], score: params[:score])
     if @post.save 
       render json: @post
     else
@@ -30,16 +31,16 @@ class Api::V1::PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     if @post.update(post_params)
-      render json: @post 
+      render json: @post
     else 
       render json: {error: "post not found"}, status: 404
     end 
   end
 
-  def edit
-    @post = Post.find_by(id: params[:id])
-    render json: @post
-  end
+  # def edit
+  #   @post = Post.find_by(id: params[:id])
+  #   render json: @post
+  # end
 
   def destroy
     @post = Post.find_by(id: params[:id])
@@ -50,7 +51,7 @@ class Api::V1::PostsController < ApplicationController
   private 
 
   def post_params 
-    params.require(:post).permit(:id, :title, :content, :media_element, :author_id)
+    params.require(:post).permit(:id, :title, :content, :media_element, :author_id, :score)
   end
   
 end

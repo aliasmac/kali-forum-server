@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_140844) do
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
-    t.text "comment"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_140844) do
     t.text "content"
     t.string "media_element"
     t.integer "author_id"
+    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
