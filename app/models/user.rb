@@ -3,4 +3,7 @@ class User < ApplicationRecord
     has_many :comments
     # read only relationship
     has_many :commented_posts, :through => :comments, :source => :post
+
+    
+
 end

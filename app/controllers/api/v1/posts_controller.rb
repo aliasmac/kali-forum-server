@@ -11,10 +11,12 @@ class Api::V1::PostsController < ApplicationController
   # end
 
   def create
-    @post = Post.new(title: params[:title] , content: params[:content], media_element: params[:media_element], author_id: params[:author_id], score: params[:score])
+    puts "Heeelllllllloooo #{post_params}"
+    @post = Post.new(post_params)
     if @post.save 
       render json: @post
     else
+      puts @post.errors.full_messages.each {|x| puts x}
       render json: {error: "Post could not be created!"}, status: 400
     end
   end

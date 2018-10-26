@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   has_many :comments 
 
     class CommentSerializer < ActiveModel::Serializer
-      attributes :post_id, :user_id, :content
+      attributes :id, :post_id, :user_id, :content
     end 
 
 end
